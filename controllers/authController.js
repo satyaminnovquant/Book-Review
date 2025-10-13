@@ -5,7 +5,7 @@ const { sendSuccess, sendError } = require('../utils/responseUtils');
 const signup = async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    
+
     const existingUser = await findUserByEmail(email);
     if (existingUser) {
       return sendError(res, 'User already exists', 400);
@@ -37,7 +37,11 @@ const login = async (req, res) => {
       return sendError(res, 'Invalid credentials', 401);
     }
 
-    const token = generateToken({ userId: user.id });
+    const token = generateToken({
+      userId: user.id,
+      email: user.email,
+      username: user.username
+    });
     const userData = { token, userId: user.id, username: user.username, email: user.email };
 
     return sendSuccess(res, 'Login successful', userData);

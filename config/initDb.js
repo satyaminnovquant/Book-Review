@@ -1,4 +1,4 @@
-const db = require('./db'); 
+const db = require('./db');
 
 const createTables = async () => {
   try {
@@ -19,6 +19,7 @@ const createTables = async () => {
         id INT AUTO_INCREMENT PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         author VARCHAR(255) NOT NULL,
+         author_email VARCHAR(255), 
         isbn VARCHAR(20) UNIQUE,
         description TEXT,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

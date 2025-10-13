@@ -4,8 +4,8 @@ const getAllBooks = async () => {
     return await findAll('books');
 };
 
-const createBook = async (title, author, isbn, description) => {
-    return await create('books', { title, author, isbn, description });
+const createBook = async (title, author,author_email, isbn, description) => {
+    return await create('books', { title, author,author_email, isbn, description });
 };
 
 const findBookById = async (id) => {

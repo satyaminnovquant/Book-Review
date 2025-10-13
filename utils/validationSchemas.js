@@ -62,6 +62,10 @@ const validateLogin = (req, res, next) => {
 const bookSchema = Joi.object({
   title: Joi.string().required(),
   author: Joi.string().required(),
+  author_email: Joi.string().email().required().messages({
+    "string.email": "Please enter a valid email address",
+    "any.required": "Email is required",
+  }),
   isbn: Joi.string().required(),
   description: Joi.string().optional()
 });

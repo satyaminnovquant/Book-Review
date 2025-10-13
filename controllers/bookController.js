@@ -12,8 +12,8 @@ const getAllBooks = async (req, res) => {
 
 const addBook = async (req, res) => {
     try {
-        const { title, author, isbn, description } = req.body;
-        const bookId = await createBook(title, author, isbn, description);
+        const { title, author,author_email, isbn, description } = req.body;
+        const bookId = await createBook(title, author,author_email,isbn, description);
         return sendSuccess(res, 'Book added successfully', { bookId }, 201);
     } catch (error) {
         if (error.code === 'ER_DUP_ENTRY') {
